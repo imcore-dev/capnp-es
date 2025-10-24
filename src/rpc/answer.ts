@@ -60,6 +60,7 @@ export class AnswerEntry<R extends Struct> {
 
     const retmsg = newReturnMessage(this.id);
     const ret = retmsg.return;
+    ret.releaseParamCaps = false;
     const payload = ret._initResults();
     payload.content = obj;
 
@@ -111,6 +112,7 @@ export class AnswerEntry<R extends Struct> {
 
     const m = newReturnMessage(this.id);
     const mret = m.return;
+    mret.releaseParamCaps = false;
     setReturnException(mret, err);
 
     this.err = err;
