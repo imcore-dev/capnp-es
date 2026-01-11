@@ -17,10 +17,11 @@ export class Ref implements Client {
   ) {
     const closeState = { closed: false };
     this.closeState = closeState;
-    finalize(this, () => {
+    const rcRef = new WeakRef(rc);
+    finalize(this, function () {
       if (!closeState.closed) {
         closeState.closed = true;
-        rc.decref();
+        rcRef.deref()?.decref()
       }
     });
   }
