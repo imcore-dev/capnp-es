@@ -27,13 +27,13 @@ export class ImportClient implements Client {
 
     const q = this.conn.newQuestion(cl.method);
     const msg = newMessage();
-    const msgCall = msg._initCall();
+    const msgCall = msg.initCall();
     msgCall.questionId = q.id;
     msgCall.interfaceId = cl.method.interfaceId;
     msgCall.methodId = cl.method.methodId;
-    const target = msgCall._initTarget();
+    const target = msgCall.initTarget();
     target.importedCap = this.id;
-    const payload = msgCall._initParams();
+    const payload = msgCall.initParams();
     this.conn.fillParams(payload, cl);
     // TODO: handle thrown exceptions here?
 

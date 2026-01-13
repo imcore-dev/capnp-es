@@ -44,7 +44,7 @@ export function generateStructNode(
   const fullClassName = getFullClassName(node);
   const nestedNodes = node.nestedNodes
     .map(({ id }) => lookupNode(ctx, id))
-    .filter((node) => !node._isConst && !node._isAnnotation);
+    .filter((node) => !node.isConst && !node.isAnnotation);
   const nodeId = node.id;
   const nodeIdHex = nodeId.toString(16);
   const unionFields = getUnnamedUnionFields(node);
@@ -65,7 +65,7 @@ export function generateStructNode(
     .filter((field) => needsConcreteListClass(field))
     .sort(compareCodeOrder);
   const consts = ctx.nodes.filter(
-    (node) => node.scopeId === nodeId && node._isConst,
+    (node) => node.scopeId === nodeId && node.isConst,
   );
   const hasUnnamedUnion = discriminantCount !== 0;
 
@@ -92,7 +92,7 @@ export function generateStructNode(
   for (const index of fieldIndexInCodeOrder) {
     const field = fields[index];
     if (
-      field._isSlot &&
+      field.isSlot &&
       field.slot.hadExplicitDefault &&
       field.slot.type.which() !== schema.Type.VOID
     ) {
@@ -174,11 +174,11 @@ export function generateStructFieldMethods(
   let jsType: string;
   let whichType: schema.Type_Which | "group";
 
-  if (field._isSlot) {
+  if (field.isSlot) {
     const slotType = field.slot.type;
     jsType = getJsType(ctx, slotType, false);
     whichType = slotType.which();
-  } else if (field._isGroup) {
+  } else if (field.isGroup) {
     jsType = getFullClassName(lookupNode(ctx, field.group.typeId));
     whichType = "group";
   } else {
@@ -197,12 +197,12 @@ export function generateStructFieldMethods(
   const capitalizedName = util.c2t(name);
   const { discriminantValue } = field;
   const fullClassName = getFullClassName(node);
-  const hadExplicitDefault = field._isSlot && field.slot.hadExplicitDefault;
+  const hadExplicitDefault = field.isSlot && field.slot.hadExplicitDefault;
   const maybeDefaultArg = hadExplicitDefault
     ? `, ${fullClassName}._capnp.default${capitalizedName}`
     : "";
   const union = discriminantValue !== schema.Field.NO_DISCRIMINANT;
-  const offset = field._isSlot ? field.slot.offset : 0;
+  const offset = field.isSlot ? field.slot.offset : 0;
 
   let adopt = false;
   let disown = false;
@@ -255,6 +255,7 @@ export function generateStructFieldMethods(
     }
 
     case schema.Type.INTERFACE: {
+      has = true;
       get = `new ${jsType}($.utils.getInterfaceClientOrNullAt(${offset}, this))`;
       set = `$.utils.setInterfacePointer(this.segment.message.addCap(value.client), $.utils.getPointer(${offset}, this))`;
       break;
@@ -299,6 +300,7 @@ export function generateStructFieldMethods(
     }
 
     case schema.Type.TEXT: {
+      has = true;
       get = `$.utils.getText(${offset}, this${maybeDefaultArg})`;
       set = `$.utils.setText(${offset}, value, this)`;
       break;
@@ -323,9 +325,22 @@ export function generateStructFieldMethods(
     }
   }
 
+  if (init) {
+    const params =
+      whichType === schema.Type.DATA || whichType === schema.Type.LIST
+        ? `length: number`
+        : "";
+    members.push(`
+      init${capitalizedName}(${params}): ${jsType} {
+        ${union ? `$.utils.setUint16(${discriminantOffset * 2}, ${discriminantValue}, this);` : ""}
+        return ${init};
+      }
+    `);
+  }
+
   if (adopt) {
     members.push(`
-      _adopt${capitalizedName}(value: $.Orphan<${jsType}>): void {
+      adopt${capitalizedName}(value: $.Orphan<${jsType}>): void {
         ${union ? `$.utils.setUint16(${discriminantOffset * 2}, ${discriminantValue}, this);` : ""}
         $.utils.adopt(value, $.utils.getPointer(${offset}, this));
       }
@@ -334,7 +349,7 @@ export function generateStructFieldMethods(
 
   if (disown) {
     members.push(`
-      _disown${capitalizedName}(): $.Orphan<${jsType}> {
+      disown${capitalizedName}(): $.Orphan<${jsType}> {
         return $.utils.disown(this.${name === "constructor" ? `$${name}` : name});
       }
     `);
@@ -354,35 +369,6 @@ export function generateStructFieldMethods(
     `);
   }
 
-  if (has) {
-    members.push(`
-      _has${capitalizedName}(): boolean {
-        return !$.utils.isNull($.utils.getPointer(${offset}, this));
-      }
-    `);
-  }
-
-  if (init) {
-    const params =
-      whichType === schema.Type.DATA || whichType === schema.Type.LIST
-        ? `length: number`
-        : "";
-    members.push(`
-      _init${capitalizedName}(${params}): ${jsType} {
-        ${union ? `$.utils.setUint16(${discriminantOffset * 2}, ${discriminantValue}, this);` : ""}
-        return ${init};
-      }
-    `);
-  }
-
-  if (union) {
-    members.push(`
-      get _is${capitalizedName}(): boolean {
-        return $.utils.getUint16(${discriminantOffset * 2}, this) === ${discriminantValue};
-      }
-    `);
-  }
-
   if (set || union) {
     const param = set ? `value: ${jsType}` : `_: true`;
     members.push(`
@@ -391,6 +377,30 @@ export function generateStructFieldMethods(
         ${set ? `${set};` : ""}
       }
     `);
+  }
+
+  if (union) {
+    members.push(`
+      get is${capitalizedName}(): boolean {
+        return $.utils.getUint16(${discriminantOffset * 2}, this) === ${discriminantValue};
+      }
+    `);
+  }
+
+  if (has) {
+    if (whichType === schema.Type.TEXT) {
+      members.push(`
+        get has${capitalizedName}(): boolean {
+          return !$.utils.isNull($.Text.fromPointer($.utils.getPointer(${offset}, this)));
+        }
+      `);
+    } else {
+      members.push(`
+        get has${capitalizedName}(): boolean {
+          return !$.utils.isNull($.utils.getPointer(${offset}, this));
+        }
+      `);
+    }
   }
 }
 /**

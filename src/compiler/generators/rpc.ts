@@ -242,7 +242,7 @@ export function generateResultPromise(
     let isInterface = false;
     let slot: schema.Field_Slot;
 
-    if (field._isSlot) {
+    if (field.isSlot) {
       slot = field.slot;
       const slotType = slot.type;
       if (slotType.which() !== schema.Type.INTERFACE) {
@@ -251,7 +251,7 @@ export function generateResultPromise(
       }
       isInterface = true;
       jsType = getJsType(ctx, slotType, false);
-    } else if (field._isGroup) {
+    } else if (field.isGroup) {
       // TODO: how should groups be handled?
       return;
     } else {

@@ -61,12 +61,12 @@ export class AnswerEntry<R extends Struct> {
     const retmsg = newReturnMessage(this.id);
     const ret = retmsg.return;
     ret.releaseParamCaps = false;
-    const payload = ret._initResults();
+    const payload = ret.initResults();
     payload.content = obj;
 
     let firstErr: Error | undefined;
     try {
-      this.conn.makeCapTable(ret.segment, (len) => payload._initCapTable(len));
+      this.conn.makeCapTable(ret.segment, (len) => payload.initCapTable(len));
       this.deferred.resolve(obj);
       this.conn.sendMessage(retmsg);
     } catch (error_) {

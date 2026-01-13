@@ -31,12 +31,12 @@ export function generateInterfaceNode(
   const fullClassName = getFullClassName(node);
   const nestedNodes = node.nestedNodes
     .map((n) => lookupNode(ctx, n))
-    .filter((n) => !n._isConst && !n._isAnnotation);
+    .filter((n) => !n.isConst && !n.isAnnotation);
   const nodeId = node.id;
   const nodeIdHex = nodeId.toString(16);
 
   // List of field indexes in code order
-  const consts = ctx.nodes.filter((n) => n.scopeId === nodeId && n._isConst);
+  const consts = ctx.nodes.filter((n) => n.scopeId === nodeId && n.isConst);
 
   const members: string[] = [];
 

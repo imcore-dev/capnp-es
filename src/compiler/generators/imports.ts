@@ -65,7 +65,7 @@ export function generateNestedImports(ctx: CodeGeneratorFileContext): void {
     const imports = getImportNodes(ctx, importNode)
       .flatMap((node) => {
         const fullClassName = getFullClassName(node);
-        if (node._isInterface) {
+        if (node.isInterface) {
           // The client is required for imported interfaces.
           return [fullClassName, `${fullClassName}$Client`];
         }
@@ -106,7 +106,7 @@ export function getImportNodes(
   // Only consider structs, enums, and interfaces.
   const nodes = newNestedNodes
     .map(({ id }) => lookupNode(ctx, id))
-    .filter((node) => node._isStruct || node._isEnum || node._isInterface);
+    .filter((node) => node.isStruct || node.isEnum || node.isInterface);
 
   // Recurse on the nested nodes.
   return nodes.concat(

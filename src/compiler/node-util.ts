@@ -19,7 +19,7 @@ export function getConcreteListType(
   ctx: CodeGeneratorFileContext,
   type: schema.Type,
 ): string {
-  if (!type._isList) {
+  if (!type.isList) {
     return getJsType(ctx, type, false);
   }
 
@@ -224,17 +224,17 @@ export function lookupNodeSourceInfo(
  * @returns Returns `true` if the field requires a concrete list class initializer.
  */
 export function needsConcreteListClass(field: schema.Field): boolean {
-  if (!field._isSlot) {
+  if (!field.isSlot) {
     return false;
   }
 
   const slotType = field.slot.type;
 
-  if (!slotType._isList) {
+  if (!slotType.isList) {
     return false;
   }
 
   const { elementType } = slotType.list;
 
-  return elementType._isStruct || elementType._isList;
+  return elementType.isStruct || elementType.isList;
 }

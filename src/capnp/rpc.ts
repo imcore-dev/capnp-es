@@ -120,11 +120,15 @@ export class Message extends $.Struct {
     id: "91b79f1f808db032",
     size: new $.ObjectSize(8, 1),
   };
-  _adoptUnimplemented(value: $.Orphan<Message>): void {
+  initUnimplemented(): Message {
+    $.utils.setUint16(0, 0, this);
+    return $.utils.initStructAt(0, Message, this);
+  }
+  adoptUnimplemented(value: $.Orphan<Message>): void {
     $.utils.setUint16(0, 0, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownUnimplemented(): $.Orphan<Message> {
+  disownUnimplemented(): $.Orphan<Message> {
     return $.utils.disown(this.unimplemented);
   }
   /**
@@ -150,25 +154,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("unimplemented", $.utils.getUint16(0, this), 0, this);
     return $.utils.getStruct(0, Message, this);
   }
-  _hasUnimplemented(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initUnimplemented(): Message {
-    $.utils.setUint16(0, 0, this);
-    return $.utils.initStructAt(0, Message, this);
-  }
-  get _isUnimplemented(): boolean {
-    return $.utils.getUint16(0, this) === 0;
-  }
   set unimplemented(value: Message) {
     $.utils.setUint16(0, 0, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptAbort(value: $.Orphan<Exception>): void {
+  get isUnimplemented(): boolean {
+    return $.utils.getUint16(0, this) === 0;
+  }
+  get hasUnimplemented(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initAbort(): Exception {
+    $.utils.setUint16(0, 1, this);
+    return $.utils.initStructAt(0, Exception, this);
+  }
+  adoptAbort(value: $.Orphan<Exception>): void {
     $.utils.setUint16(0, 1, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownAbort(): $.Orphan<Exception> {
+  disownAbort(): $.Orphan<Exception> {
     return $.utils.disown(this.abort);
   }
   /**
@@ -184,25 +188,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("abort", $.utils.getUint16(0, this), 1, this);
     return $.utils.getStruct(0, Exception, this);
   }
-  _hasAbort(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initAbort(): Exception {
-    $.utils.setUint16(0, 1, this);
-    return $.utils.initStructAt(0, Exception, this);
-  }
-  get _isAbort(): boolean {
-    return $.utils.getUint16(0, this) === 1;
-  }
   set abort(value: Exception) {
     $.utils.setUint16(0, 1, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptBootstrap(value: $.Orphan<Bootstrap>): void {
+  get isAbort(): boolean {
+    return $.utils.getUint16(0, this) === 1;
+  }
+  get hasAbort(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initBootstrap(): Bootstrap {
+    $.utils.setUint16(0, 8, this);
+    return $.utils.initStructAt(0, Bootstrap, this);
+  }
+  adoptBootstrap(value: $.Orphan<Bootstrap>): void {
     $.utils.setUint16(0, 8, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownBootstrap(): $.Orphan<Bootstrap> {
+  disownBootstrap(): $.Orphan<Bootstrap> {
     return $.utils.disown(this.bootstrap);
   }
   /**
@@ -213,25 +217,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("bootstrap", $.utils.getUint16(0, this), 8, this);
     return $.utils.getStruct(0, Bootstrap, this);
   }
-  _hasBootstrap(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initBootstrap(): Bootstrap {
-    $.utils.setUint16(0, 8, this);
-    return $.utils.initStructAt(0, Bootstrap, this);
-  }
-  get _isBootstrap(): boolean {
-    return $.utils.getUint16(0, this) === 8;
-  }
   set bootstrap(value: Bootstrap) {
     $.utils.setUint16(0, 8, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptCall(value: $.Orphan<Call>): void {
+  get isBootstrap(): boolean {
+    return $.utils.getUint16(0, this) === 8;
+  }
+  get hasBootstrap(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initCall(): Call {
+    $.utils.setUint16(0, 2, this);
+    return $.utils.initStructAt(0, Call, this);
+  }
+  adoptCall(value: $.Orphan<Call>): void {
     $.utils.setUint16(0, 2, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownCall(): $.Orphan<Call> {
+  disownCall(): $.Orphan<Call> {
     return $.utils.disown(this.call);
   }
   /**
@@ -242,25 +246,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("call", $.utils.getUint16(0, this), 2, this);
     return $.utils.getStruct(0, Call, this);
   }
-  _hasCall(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initCall(): Call {
-    $.utils.setUint16(0, 2, this);
-    return $.utils.initStructAt(0, Call, this);
-  }
-  get _isCall(): boolean {
-    return $.utils.getUint16(0, this) === 2;
-  }
   set call(value: Call) {
     $.utils.setUint16(0, 2, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptReturn(value: $.Orphan<Return>): void {
+  get isCall(): boolean {
+    return $.utils.getUint16(0, this) === 2;
+  }
+  get hasCall(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initReturn(): Return {
+    $.utils.setUint16(0, 3, this);
+    return $.utils.initStructAt(0, Return, this);
+  }
+  adoptReturn(value: $.Orphan<Return>): void {
     $.utils.setUint16(0, 3, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownReturn(): $.Orphan<Return> {
+  disownReturn(): $.Orphan<Return> {
     return $.utils.disown(this.return);
   }
   /**
@@ -271,25 +275,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("return", $.utils.getUint16(0, this), 3, this);
     return $.utils.getStruct(0, Return, this);
   }
-  _hasReturn(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initReturn(): Return {
-    $.utils.setUint16(0, 3, this);
-    return $.utils.initStructAt(0, Return, this);
-  }
-  get _isReturn(): boolean {
-    return $.utils.getUint16(0, this) === 3;
-  }
   set return(value: Return) {
     $.utils.setUint16(0, 3, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptFinish(value: $.Orphan<Finish>): void {
+  get isReturn(): boolean {
+    return $.utils.getUint16(0, this) === 3;
+  }
+  get hasReturn(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initFinish(): Finish {
+    $.utils.setUint16(0, 4, this);
+    return $.utils.initStructAt(0, Finish, this);
+  }
+  adoptFinish(value: $.Orphan<Finish>): void {
     $.utils.setUint16(0, 4, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownFinish(): $.Orphan<Finish> {
+  disownFinish(): $.Orphan<Finish> {
     return $.utils.disown(this.finish);
   }
   /**
@@ -300,25 +304,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("finish", $.utils.getUint16(0, this), 4, this);
     return $.utils.getStruct(0, Finish, this);
   }
-  _hasFinish(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initFinish(): Finish {
-    $.utils.setUint16(0, 4, this);
-    return $.utils.initStructAt(0, Finish, this);
-  }
-  get _isFinish(): boolean {
-    return $.utils.getUint16(0, this) === 4;
-  }
   set finish(value: Finish) {
     $.utils.setUint16(0, 4, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptResolve(value: $.Orphan<Resolve>): void {
+  get isFinish(): boolean {
+    return $.utils.getUint16(0, this) === 4;
+  }
+  get hasFinish(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initResolve(): Resolve {
+    $.utils.setUint16(0, 5, this);
+    return $.utils.initStructAt(0, Resolve, this);
+  }
+  adoptResolve(value: $.Orphan<Resolve>): void {
     $.utils.setUint16(0, 5, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownResolve(): $.Orphan<Resolve> {
+  disownResolve(): $.Orphan<Resolve> {
     return $.utils.disown(this.resolve);
   }
   /**
@@ -329,25 +333,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("resolve", $.utils.getUint16(0, this), 5, this);
     return $.utils.getStruct(0, Resolve, this);
   }
-  _hasResolve(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initResolve(): Resolve {
-    $.utils.setUint16(0, 5, this);
-    return $.utils.initStructAt(0, Resolve, this);
-  }
-  get _isResolve(): boolean {
-    return $.utils.getUint16(0, this) === 5;
-  }
   set resolve(value: Resolve) {
     $.utils.setUint16(0, 5, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptRelease(value: $.Orphan<Release>): void {
+  get isResolve(): boolean {
+    return $.utils.getUint16(0, this) === 5;
+  }
+  get hasResolve(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initRelease(): Release {
+    $.utils.setUint16(0, 6, this);
+    return $.utils.initStructAt(0, Release, this);
+  }
+  adoptRelease(value: $.Orphan<Release>): void {
     $.utils.setUint16(0, 6, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownRelease(): $.Orphan<Release> {
+  disownRelease(): $.Orphan<Release> {
     return $.utils.disown(this.release);
   }
   /**
@@ -358,25 +362,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("release", $.utils.getUint16(0, this), 6, this);
     return $.utils.getStruct(0, Release, this);
   }
-  _hasRelease(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initRelease(): Release {
-    $.utils.setUint16(0, 6, this);
-    return $.utils.initStructAt(0, Release, this);
-  }
-  get _isRelease(): boolean {
-    return $.utils.getUint16(0, this) === 6;
-  }
   set release(value: Release) {
     $.utils.setUint16(0, 6, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptDisembargo(value: $.Orphan<Disembargo>): void {
+  get isRelease(): boolean {
+    return $.utils.getUint16(0, this) === 6;
+  }
+  get hasRelease(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initDisembargo(): Disembargo {
+    $.utils.setUint16(0, 13, this);
+    return $.utils.initStructAt(0, Disembargo, this);
+  }
+  adoptDisembargo(value: $.Orphan<Disembargo>): void {
     $.utils.setUint16(0, 13, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownDisembargo(): $.Orphan<Disembargo> {
+  disownDisembargo(): $.Orphan<Disembargo> {
     return $.utils.disown(this.disembargo);
   }
   /**
@@ -387,25 +391,21 @@ export class Message extends $.Struct {
     $.utils.testWhich("disembargo", $.utils.getUint16(0, this), 13, this);
     return $.utils.getStruct(0, Disembargo, this);
   }
-  _hasDisembargo(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initDisembargo(): Disembargo {
-    $.utils.setUint16(0, 13, this);
-    return $.utils.initStructAt(0, Disembargo, this);
-  }
-  get _isDisembargo(): boolean {
-    return $.utils.getUint16(0, this) === 13;
-  }
   set disembargo(value: Disembargo) {
     $.utils.setUint16(0, 13, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptObsoleteSave(value: $.Orphan<$.Pointer>): void {
+  get isDisembargo(): boolean {
+    return $.utils.getUint16(0, this) === 13;
+  }
+  get hasDisembargo(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  adoptObsoleteSave(value: $.Orphan<$.Pointer>): void {
     $.utils.setUint16(0, 7, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownObsoleteSave(): $.Orphan<$.Pointer> {
+  disownObsoleteSave(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.obsoleteSave);
   }
   /**
@@ -418,21 +418,21 @@ export class Message extends $.Struct {
     $.utils.testWhich("obsoleteSave", $.utils.getUint16(0, this), 7, this);
     return $.utils.getPointer(0, this);
   }
-  _hasObsoleteSave(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  get _isObsoleteSave(): boolean {
-    return $.utils.getUint16(0, this) === 7;
-  }
   set obsoleteSave(value: $.Pointer) {
     $.utils.setUint16(0, 7, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptObsoleteDelete(value: $.Orphan<$.Pointer>): void {
+  get isObsoleteSave(): boolean {
+    return $.utils.getUint16(0, this) === 7;
+  }
+  get hasObsoleteSave(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  adoptObsoleteDelete(value: $.Orphan<$.Pointer>): void {
     $.utils.setUint16(0, 9, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownObsoleteDelete(): $.Orphan<$.Pointer> {
+  disownObsoleteDelete(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.obsoleteDelete);
   }
   /**
@@ -443,21 +443,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("obsoleteDelete", $.utils.getUint16(0, this), 9, this);
     return $.utils.getPointer(0, this);
   }
-  _hasObsoleteDelete(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  get _isObsoleteDelete(): boolean {
-    return $.utils.getUint16(0, this) === 9;
-  }
   set obsoleteDelete(value: $.Pointer) {
     $.utils.setUint16(0, 9, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptProvide(value: $.Orphan<Provide>): void {
+  get isObsoleteDelete(): boolean {
+    return $.utils.getUint16(0, this) === 9;
+  }
+  get hasObsoleteDelete(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initProvide(): Provide {
+    $.utils.setUint16(0, 10, this);
+    return $.utils.initStructAt(0, Provide, this);
+  }
+  adoptProvide(value: $.Orphan<Provide>): void {
     $.utils.setUint16(0, 10, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownProvide(): $.Orphan<Provide> {
+  disownProvide(): $.Orphan<Provide> {
     return $.utils.disown(this.provide);
   }
   /**
@@ -468,25 +472,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("provide", $.utils.getUint16(0, this), 10, this);
     return $.utils.getStruct(0, Provide, this);
   }
-  _hasProvide(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initProvide(): Provide {
-    $.utils.setUint16(0, 10, this);
-    return $.utils.initStructAt(0, Provide, this);
-  }
-  get _isProvide(): boolean {
-    return $.utils.getUint16(0, this) === 10;
-  }
   set provide(value: Provide) {
     $.utils.setUint16(0, 10, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptAccept(value: $.Orphan<Accept>): void {
+  get isProvide(): boolean {
+    return $.utils.getUint16(0, this) === 10;
+  }
+  get hasProvide(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initAccept(): Accept {
+    $.utils.setUint16(0, 11, this);
+    return $.utils.initStructAt(0, Accept, this);
+  }
+  adoptAccept(value: $.Orphan<Accept>): void {
     $.utils.setUint16(0, 11, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownAccept(): $.Orphan<Accept> {
+  disownAccept(): $.Orphan<Accept> {
     return $.utils.disown(this.accept);
   }
   /**
@@ -497,25 +501,25 @@ export class Message extends $.Struct {
     $.utils.testWhich("accept", $.utils.getUint16(0, this), 11, this);
     return $.utils.getStruct(0, Accept, this);
   }
-  _hasAccept(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initAccept(): Accept {
-    $.utils.setUint16(0, 11, this);
-    return $.utils.initStructAt(0, Accept, this);
-  }
-  get _isAccept(): boolean {
-    return $.utils.getUint16(0, this) === 11;
-  }
   set accept(value: Accept) {
     $.utils.setUint16(0, 11, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptJoin(value: $.Orphan<Join>): void {
+  get isAccept(): boolean {
+    return $.utils.getUint16(0, this) === 11;
+  }
+  get hasAccept(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initJoin(): Join {
+    $.utils.setUint16(0, 12, this);
+    return $.utils.initStructAt(0, Join, this);
+  }
+  adoptJoin(value: $.Orphan<Join>): void {
     $.utils.setUint16(0, 12, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownJoin(): $.Orphan<Join> {
+  disownJoin(): $.Orphan<Join> {
     return $.utils.disown(this.join);
   }
   /**
@@ -526,19 +530,15 @@ export class Message extends $.Struct {
     $.utils.testWhich("join", $.utils.getUint16(0, this), 12, this);
     return $.utils.getStruct(0, Join, this);
   }
-  _hasJoin(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initJoin(): Join {
-    $.utils.setUint16(0, 12, this);
-    return $.utils.initStructAt(0, Join, this);
-  }
-  get _isJoin(): boolean {
-    return $.utils.getUint16(0, this) === 12;
-  }
   set join(value: Join) {
     $.utils.setUint16(0, 12, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get isJoin(): boolean {
+    return $.utils.getUint16(0, this) === 12;
+  }
+  get hasJoin(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   toString(): string { return "Message_" + super.toString(); }
   which(): Message_Which {
@@ -594,10 +594,10 @@ export class Bootstrap extends $.Struct {
   set questionId(value: number) {
     $.utils.setUint32(0, value, this);
   }
-  _adoptDeprecatedObjectId(value: $.Orphan<$.Pointer>): void {
+  adoptDeprecatedObjectId(value: $.Orphan<$.Pointer>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownDeprecatedObjectId(): $.Orphan<$.Pointer> {
+  disownDeprecatedObjectId(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.deprecatedObjectId);
   }
   /**
@@ -679,11 +679,11 @@ export class Bootstrap extends $.Struct {
   get deprecatedObjectId(): $.Pointer {
     return $.utils.getPointer(0, this);
   }
-  _hasDeprecatedObjectId(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
   set deprecatedObjectId(value: $.Pointer) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get hasDeprecatedObjectId(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   toString(): string { return "Bootstrap_" + super.toString(); }
 }
@@ -763,23 +763,23 @@ export class Call_SendResultsTo extends $.Struct {
     id: "dae8b0f61aab5f99",
     size: new $.ObjectSize(24, 3),
   };
-  get _isCaller(): boolean {
-    return $.utils.getUint16(6, this) === 0;
-  }
   set caller(_: true) {
     $.utils.setUint16(6, 0, this);
   }
-  get _isYourself(): boolean {
-    return $.utils.getUint16(6, this) === 1;
+  get isCaller(): boolean {
+    return $.utils.getUint16(6, this) === 0;
   }
   set yourself(_: true) {
     $.utils.setUint16(6, 1, this);
   }
-  _adoptThirdParty(value: $.Orphan<$.Pointer>): void {
+  get isYourself(): boolean {
+    return $.utils.getUint16(6, this) === 1;
+  }
+  adoptThirdParty(value: $.Orphan<$.Pointer>): void {
     $.utils.setUint16(6, 2, this);
     $.utils.adopt(value, $.utils.getPointer(2, this));
   }
-  _disownThirdParty(): $.Orphan<$.Pointer> {
+  disownThirdParty(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.thirdParty);
   }
   /**
@@ -800,15 +800,15 @@ export class Call_SendResultsTo extends $.Struct {
     $.utils.testWhich("thirdParty", $.utils.getUint16(6, this), 2, this);
     return $.utils.getPointer(2, this);
   }
-  _hasThirdParty(): boolean {
-    return !$.utils.isNull($.utils.getPointer(2, this));
-  }
-  get _isThirdParty(): boolean {
-    return $.utils.getUint16(6, this) === 2;
-  }
   set thirdParty(value: $.Pointer) {
     $.utils.setUint16(6, 2, this);
     $.utils.copyFrom(value, $.utils.getPointer(2, this));
+  }
+  get isThirdParty(): boolean {
+    return $.utils.getUint16(6, this) === 2;
+  }
+  get hasThirdParty(): boolean {
+    return !$.utils.isNull($.utils.getPointer(2, this));
   }
   toString(): string { return "Call_SendResultsTo_" + super.toString(); }
   which(): Call_SendResultsTo_Which {
@@ -847,10 +847,13 @@ export class Call extends $.Struct {
   set questionId(value: number) {
     $.utils.setUint32(0, value, this);
   }
-  _adoptTarget(value: $.Orphan<MessageTarget>): void {
+  initTarget(): MessageTarget {
+    return $.utils.initStructAt(0, MessageTarget, this);
+  }
+  adoptTarget(value: $.Orphan<MessageTarget>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownTarget(): $.Orphan<MessageTarget> {
+  disownTarget(): $.Orphan<MessageTarget> {
     return $.utils.disown(this.target);
   }
   /**
@@ -860,14 +863,11 @@ export class Call extends $.Struct {
   get target(): MessageTarget {
     return $.utils.getStruct(0, MessageTarget, this);
   }
-  _hasTarget(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initTarget(): MessageTarget {
-    return $.utils.initStructAt(0, MessageTarget, this);
-  }
   set target(value: MessageTarget) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get hasTarget(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   /**
 * The type ID of the interface being called.  Each capability may implement multiple interfaces.
@@ -939,10 +939,13 @@ export class Call extends $.Struct {
   set onlyPromisePipeline(value: boolean) {
     $.utils.setBit(130, value, this, Call._capnp.defaultOnlyPromisePipeline);
   }
-  _adoptParams(value: $.Orphan<Payload>): void {
+  initParams(): Payload {
+    return $.utils.initStructAt(1, Payload, this);
+  }
+  adoptParams(value: $.Orphan<Payload>): void {
     $.utils.adopt(value, $.utils.getPointer(1, this));
   }
-  _disownParams(): $.Orphan<Payload> {
+  disownParams(): $.Orphan<Payload> {
     return $.utils.disown(this.params);
   }
   /**
@@ -953,23 +956,20 @@ export class Call extends $.Struct {
   get params(): Payload {
     return $.utils.getStruct(1, Payload, this);
   }
-  _hasParams(): boolean {
-    return !$.utils.isNull($.utils.getPointer(1, this));
-  }
-  _initParams(): Payload {
-    return $.utils.initStructAt(1, Payload, this);
-  }
   set params(value: Payload) {
     $.utils.copyFrom(value, $.utils.getPointer(1, this));
+  }
+  get hasParams(): boolean {
+    return !$.utils.isNull($.utils.getPointer(1, this));
+  }
+  initSendResultsTo(): Call_SendResultsTo {
+    return $.utils.getAs(Call_SendResultsTo, this);
   }
   /**
 * Where should the return message be sent?
 *
 */
   get sendResultsTo(): Call_SendResultsTo {
-    return $.utils.getAs(Call_SendResultsTo, this);
-  }
-  _initSendResultsTo(): Call_SendResultsTo {
     return $.utils.getAs(Call_SendResultsTo, this);
   }
   toString(): string { return "Call_" + super.toString(); }
@@ -1087,11 +1087,15 @@ export class Return extends $.Struct {
   set noFinishNeeded(value: boolean) {
     $.utils.setBit(33, value, this, Return._capnp.defaultNoFinishNeeded);
   }
-  _adoptResults(value: $.Orphan<Payload>): void {
+  initResults(): Payload {
+    $.utils.setUint16(6, 0, this);
+    return $.utils.initStructAt(0, Payload, this);
+  }
+  adoptResults(value: $.Orphan<Payload>): void {
     $.utils.setUint16(6, 0, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownResults(): $.Orphan<Payload> {
+  disownResults(): $.Orphan<Payload> {
     return $.utils.disown(this.results);
   }
   /**
@@ -1108,25 +1112,25 @@ export class Return extends $.Struct {
     $.utils.testWhich("results", $.utils.getUint16(6, this), 0, this);
     return $.utils.getStruct(0, Payload, this);
   }
-  _hasResults(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initResults(): Payload {
-    $.utils.setUint16(6, 0, this);
-    return $.utils.initStructAt(0, Payload, this);
-  }
-  get _isResults(): boolean {
-    return $.utils.getUint16(6, this) === 0;
-  }
   set results(value: Payload) {
     $.utils.setUint16(6, 0, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptException(value: $.Orphan<Exception>): void {
+  get isResults(): boolean {
+    return $.utils.getUint16(6, this) === 0;
+  }
+  get hasResults(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initException(): Exception {
+    $.utils.setUint16(6, 1, this);
+    return $.utils.initStructAt(0, Exception, this);
+  }
+  adoptException(value: $.Orphan<Exception>): void {
     $.utils.setUint16(6, 1, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownException(): $.Orphan<Exception> {
+  disownException(): $.Orphan<Exception> {
     return $.utils.disown(this.exception);
   }
   /**
@@ -1137,31 +1141,27 @@ export class Return extends $.Struct {
     $.utils.testWhich("exception", $.utils.getUint16(6, this), 1, this);
     return $.utils.getStruct(0, Exception, this);
   }
-  _hasException(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initException(): Exception {
-    $.utils.setUint16(6, 1, this);
-    return $.utils.initStructAt(0, Exception, this);
-  }
-  get _isException(): boolean {
-    return $.utils.getUint16(6, this) === 1;
-  }
   set exception(value: Exception) {
     $.utils.setUint16(6, 1, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  get _isCanceled(): boolean {
-    return $.utils.getUint16(6, this) === 2;
+  get isException(): boolean {
+    return $.utils.getUint16(6, this) === 1;
+  }
+  get hasException(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   set canceled(_: true) {
     $.utils.setUint16(6, 2, this);
   }
-  get _isResultsSentElsewhere(): boolean {
-    return $.utils.getUint16(6, this) === 3;
+  get isCanceled(): boolean {
+    return $.utils.getUint16(6, this) === 2;
   }
   set resultsSentElsewhere(_: true) {
     $.utils.setUint16(6, 3, this);
+  }
+  get isResultsSentElsewhere(): boolean {
+    return $.utils.getUint16(6, this) === 3;
   }
   /**
 * The sender has also sent (before this message) a `Call` with the given question ID and with
@@ -1173,18 +1173,18 @@ export class Return extends $.Struct {
     $.utils.testWhich("takeFromOtherQuestion", $.utils.getUint16(6, this), 4, this);
     return $.utils.getUint32(8, this);
   }
-  get _isTakeFromOtherQuestion(): boolean {
-    return $.utils.getUint16(6, this) === 4;
-  }
   set takeFromOtherQuestion(value: number) {
     $.utils.setUint16(6, 4, this);
     $.utils.setUint32(8, value, this);
   }
-  _adoptAcceptFromThirdParty(value: $.Orphan<$.Pointer>): void {
+  get isTakeFromOtherQuestion(): boolean {
+    return $.utils.getUint16(6, this) === 4;
+  }
+  adoptAcceptFromThirdParty(value: $.Orphan<$.Pointer>): void {
     $.utils.setUint16(6, 5, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownAcceptFromThirdParty(): $.Orphan<$.Pointer> {
+  disownAcceptFromThirdParty(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.acceptFromThirdParty);
   }
   /**
@@ -1199,15 +1199,15 @@ export class Return extends $.Struct {
     $.utils.testWhich("acceptFromThirdParty", $.utils.getUint16(6, this), 5, this);
     return $.utils.getPointer(0, this);
   }
-  _hasAcceptFromThirdParty(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  get _isAcceptFromThirdParty(): boolean {
-    return $.utils.getUint16(6, this) === 5;
-  }
   set acceptFromThirdParty(value: $.Pointer) {
     $.utils.setUint16(6, 5, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get isAcceptFromThirdParty(): boolean {
+    return $.utils.getUint16(6, this) === 5;
+  }
+  get hasAcceptFromThirdParty(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   toString(): string { return "Return_" + super.toString(); }
   which(): Return_Which {
@@ -1387,11 +1387,15 @@ export class Resolve extends $.Struct {
   set promiseId(value: number) {
     $.utils.setUint32(0, value, this);
   }
-  _adoptCap(value: $.Orphan<CapDescriptor>): void {
+  initCap(): CapDescriptor {
+    $.utils.setUint16(4, 0, this);
+    return $.utils.initStructAt(0, CapDescriptor, this);
+  }
+  adoptCap(value: $.Orphan<CapDescriptor>): void {
     $.utils.setUint16(4, 0, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownCap(): $.Orphan<CapDescriptor> {
+  disownCap(): $.Orphan<CapDescriptor> {
     return $.utils.disown(this.cap);
   }
   /**
@@ -1411,25 +1415,25 @@ export class Resolve extends $.Struct {
     $.utils.testWhich("cap", $.utils.getUint16(4, this), 0, this);
     return $.utils.getStruct(0, CapDescriptor, this);
   }
-  _hasCap(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initCap(): CapDescriptor {
-    $.utils.setUint16(4, 0, this);
-    return $.utils.initStructAt(0, CapDescriptor, this);
-  }
-  get _isCap(): boolean {
-    return $.utils.getUint16(4, this) === 0;
-  }
   set cap(value: CapDescriptor) {
     $.utils.setUint16(4, 0, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptException(value: $.Orphan<Exception>): void {
+  get isCap(): boolean {
+    return $.utils.getUint16(4, this) === 0;
+  }
+  get hasCap(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initException(): Exception {
+    $.utils.setUint16(4, 1, this);
+    return $.utils.initStructAt(0, Exception, this);
+  }
+  adoptException(value: $.Orphan<Exception>): void {
     $.utils.setUint16(4, 1, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownException(): $.Orphan<Exception> {
+  disownException(): $.Orphan<Exception> {
     return $.utils.disown(this.exception);
   }
   /**
@@ -1440,19 +1444,15 @@ export class Resolve extends $.Struct {
     $.utils.testWhich("exception", $.utils.getUint16(4, this), 1, this);
     return $.utils.getStruct(0, Exception, this);
   }
-  _hasException(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initException(): Exception {
-    $.utils.setUint16(4, 1, this);
-    return $.utils.initStructAt(0, Exception, this);
-  }
-  get _isException(): boolean {
-    return $.utils.getUint16(4, this) === 1;
-  }
   set exception(value: Exception) {
     $.utils.setUint16(4, 1, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get isException(): boolean {
+    return $.utils.getUint16(4, this) === 1;
+  }
+  get hasException(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   toString(): string { return "Resolve_" + super.toString(); }
   which(): Resolve_Which {
@@ -1567,12 +1567,12 @@ export class Disembargo_Context extends $.Struct {
     $.utils.testWhich("senderLoopback", $.utils.getUint16(4, this), 0, this);
     return $.utils.getUint32(0, this);
   }
-  get _isSenderLoopback(): boolean {
-    return $.utils.getUint16(4, this) === 0;
-  }
   set senderLoopback(value: number) {
     $.utils.setUint16(4, 0, this);
     $.utils.setUint32(0, value, this);
+  }
+  get isSenderLoopback(): boolean {
+    return $.utils.getUint16(4, this) === 0;
   }
   /**
 * The receiver previously sent a `senderLoopback` Disembargo towards a promise resolving to
@@ -1583,18 +1583,18 @@ export class Disembargo_Context extends $.Struct {
     $.utils.testWhich("receiverLoopback", $.utils.getUint16(4, this), 1, this);
     return $.utils.getUint32(0, this);
   }
-  get _isReceiverLoopback(): boolean {
-    return $.utils.getUint16(4, this) === 1;
-  }
   set receiverLoopback(value: number) {
     $.utils.setUint16(4, 1, this);
     $.utils.setUint32(0, value, this);
   }
-  get _isAccept(): boolean {
-    return $.utils.getUint16(4, this) === 2;
+  get isReceiverLoopback(): boolean {
+    return $.utils.getUint16(4, this) === 1;
   }
   set accept(_: true) {
     $.utils.setUint16(4, 2, this);
+  }
+  get isAccept(): boolean {
+    return $.utils.getUint16(4, this) === 2;
   }
   /**
 * **(level 3)**
@@ -1610,12 +1610,12 @@ export class Disembargo_Context extends $.Struct {
     $.utils.testWhich("provide", $.utils.getUint16(4, this), 3, this);
     return $.utils.getUint32(0, this);
   }
-  get _isProvide(): boolean {
-    return $.utils.getUint16(4, this) === 3;
-  }
   set provide(value: number) {
     $.utils.setUint16(4, 3, this);
     $.utils.setUint32(0, value, this);
+  }
+  get isProvide(): boolean {
+    return $.utils.getUint16(4, this) === 3;
   }
   toString(): string { return "Disembargo_Context_" + super.toString(); }
   which(): Disembargo_Context_Which {
@@ -1701,10 +1701,13 @@ export class Disembargo extends $.Struct {
     id: "f964368b0fbd3711",
     size: new $.ObjectSize(8, 1),
   };
-  _adoptTarget(value: $.Orphan<MessageTarget>): void {
+  initTarget(): MessageTarget {
+    return $.utils.initStructAt(0, MessageTarget, this);
+  }
+  adoptTarget(value: $.Orphan<MessageTarget>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownTarget(): $.Orphan<MessageTarget> {
+  disownTarget(): $.Orphan<MessageTarget> {
     return $.utils.disown(this.target);
   }
   /**
@@ -1714,19 +1717,16 @@ export class Disembargo extends $.Struct {
   get target(): MessageTarget {
     return $.utils.getStruct(0, MessageTarget, this);
   }
-  _hasTarget(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initTarget(): MessageTarget {
-    return $.utils.initStructAt(0, MessageTarget, this);
-  }
   set target(value: MessageTarget) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  get context(): Disembargo_Context {
+  get hasTarget(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initContext(): Disembargo_Context {
     return $.utils.getAs(Disembargo_Context, this);
   }
-  _initContext(): Disembargo_Context {
+  get context(): Disembargo_Context {
     return $.utils.getAs(Disembargo_Context, this);
   }
   toString(): string { return "Disembargo_" + super.toString(); }
@@ -1761,10 +1761,13 @@ export class Provide extends $.Struct {
   set questionId(value: number) {
     $.utils.setUint32(0, value, this);
   }
-  _adoptTarget(value: $.Orphan<MessageTarget>): void {
+  initTarget(): MessageTarget {
+    return $.utils.initStructAt(0, MessageTarget, this);
+  }
+  adoptTarget(value: $.Orphan<MessageTarget>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownTarget(): $.Orphan<MessageTarget> {
+  disownTarget(): $.Orphan<MessageTarget> {
     return $.utils.disown(this.target);
   }
   /**
@@ -1774,19 +1777,16 @@ export class Provide extends $.Struct {
   get target(): MessageTarget {
     return $.utils.getStruct(0, MessageTarget, this);
   }
-  _hasTarget(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initTarget(): MessageTarget {
-    return $.utils.initStructAt(0, MessageTarget, this);
-  }
   set target(value: MessageTarget) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptRecipient(value: $.Orphan<$.Pointer>): void {
+  get hasTarget(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  adoptRecipient(value: $.Orphan<$.Pointer>): void {
     $.utils.adopt(value, $.utils.getPointer(1, this));
   }
-  _disownRecipient(): $.Orphan<$.Pointer> {
+  disownRecipient(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.recipient);
   }
   /**
@@ -1796,11 +1796,11 @@ export class Provide extends $.Struct {
   get recipient(): $.Pointer {
     return $.utils.getPointer(1, this);
   }
-  _hasRecipient(): boolean {
-    return !$.utils.isNull($.utils.getPointer(1, this));
-  }
   set recipient(value: $.Pointer) {
     $.utils.copyFrom(value, $.utils.getPointer(1, this));
+  }
+  get hasRecipient(): boolean {
+    return !$.utils.isNull($.utils.getPointer(1, this));
   }
   toString(): string { return "Provide_" + super.toString(); }
 }
@@ -1831,10 +1831,10 @@ export class Accept extends $.Struct {
   set questionId(value: number) {
     $.utils.setUint32(0, value, this);
   }
-  _adoptProvision(value: $.Orphan<$.Pointer>): void {
+  adoptProvision(value: $.Orphan<$.Pointer>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownProvision(): $.Orphan<$.Pointer> {
+  disownProvision(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.provision);
   }
   /**
@@ -1844,11 +1844,11 @@ export class Accept extends $.Struct {
   get provision(): $.Pointer {
     return $.utils.getPointer(0, this);
   }
-  _hasProvision(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
   set provision(value: $.Pointer) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get hasProvision(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   /**
 * If true, this accept shall be temporarily embargoed.  The resulting `Return` will not be sent,
@@ -1963,10 +1963,13 @@ export class Join extends $.Struct {
   set questionId(value: number) {
     $.utils.setUint32(0, value, this);
   }
-  _adoptTarget(value: $.Orphan<MessageTarget>): void {
+  initTarget(): MessageTarget {
+    return $.utils.initStructAt(0, MessageTarget, this);
+  }
+  adoptTarget(value: $.Orphan<MessageTarget>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownTarget(): $.Orphan<MessageTarget> {
+  disownTarget(): $.Orphan<MessageTarget> {
     return $.utils.disown(this.target);
   }
   /**
@@ -1976,19 +1979,16 @@ export class Join extends $.Struct {
   get target(): MessageTarget {
     return $.utils.getStruct(0, MessageTarget, this);
   }
-  _hasTarget(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initTarget(): MessageTarget {
-    return $.utils.initStructAt(0, MessageTarget, this);
-  }
   set target(value: MessageTarget) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptKeyPart(value: $.Orphan<$.Pointer>): void {
+  get hasTarget(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  adoptKeyPart(value: $.Orphan<$.Pointer>): void {
     $.utils.adopt(value, $.utils.getPointer(1, this));
   }
-  _disownKeyPart(): $.Orphan<$.Pointer> {
+  disownKeyPart(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.keyPart);
   }
   /**
@@ -1999,11 +1999,11 @@ export class Join extends $.Struct {
   get keyPart(): $.Pointer {
     return $.utils.getPointer(1, this);
   }
-  _hasKeyPart(): boolean {
-    return !$.utils.isNull($.utils.getPointer(1, this));
-  }
   set keyPart(value: $.Pointer) {
     $.utils.copyFrom(value, $.utils.getPointer(1, this));
+  }
+  get hasKeyPart(): boolean {
+    return !$.utils.isNull($.utils.getPointer(1, this));
   }
   toString(): string { return "Join_" + super.toString(); }
 }
@@ -2046,18 +2046,22 @@ export class MessageTarget extends $.Struct {
     $.utils.testWhich("importedCap", $.utils.getUint16(4, this), 0, this);
     return $.utils.getUint32(0, this);
   }
-  get _isImportedCap(): boolean {
-    return $.utils.getUint16(4, this) === 0;
-  }
   set importedCap(value: number) {
     $.utils.setUint16(4, 0, this);
     $.utils.setUint32(0, value, this);
   }
-  _adoptPromisedAnswer(value: $.Orphan<PromisedAnswer>): void {
+  get isImportedCap(): boolean {
+    return $.utils.getUint16(4, this) === 0;
+  }
+  initPromisedAnswer(): PromisedAnswer {
+    $.utils.setUint16(4, 1, this);
+    return $.utils.initStructAt(0, PromisedAnswer, this);
+  }
+  adoptPromisedAnswer(value: $.Orphan<PromisedAnswer>): void {
     $.utils.setUint16(4, 1, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownPromisedAnswer(): $.Orphan<PromisedAnswer> {
+  disownPromisedAnswer(): $.Orphan<PromisedAnswer> {
     return $.utils.disown(this.promisedAnswer);
   }
   /**
@@ -2072,19 +2076,15 @@ export class MessageTarget extends $.Struct {
     $.utils.testWhich("promisedAnswer", $.utils.getUint16(4, this), 1, this);
     return $.utils.getStruct(0, PromisedAnswer, this);
   }
-  _hasPromisedAnswer(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initPromisedAnswer(): PromisedAnswer {
-    $.utils.setUint16(4, 1, this);
-    return $.utils.initStructAt(0, PromisedAnswer, this);
-  }
-  get _isPromisedAnswer(): boolean {
-    return $.utils.getUint16(4, this) === 1;
-  }
   set promisedAnswer(value: PromisedAnswer) {
     $.utils.setUint16(4, 1, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get isPromisedAnswer(): boolean {
+    return $.utils.getUint16(4, this) === 1;
+  }
+  get hasPromisedAnswer(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   toString(): string { return "MessageTarget_" + super.toString(); }
   which(): MessageTarget_Which {
@@ -2102,10 +2102,10 @@ export class Payload extends $.Struct {
     size: new $.ObjectSize(0, 2),
   };
   static _CapTable: $.ListCtor<CapDescriptor>;
-  _adoptContent(value: $.Orphan<$.Pointer>): void {
+  adoptContent(value: $.Orphan<$.Pointer>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownContent(): $.Orphan<$.Pointer> {
+  disownContent(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.content);
   }
   /**
@@ -2116,16 +2116,19 @@ export class Payload extends $.Struct {
   get content(): $.Pointer {
     return $.utils.getPointer(0, this);
   }
-  _hasContent(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
   set content(value: $.Pointer) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptCapTable(value: $.Orphan<$.List<CapDescriptor>>): void {
+  get hasContent(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initCapTable(length: number): $.List<CapDescriptor> {
+    return $.utils.initList(1, Payload._CapTable, length, this);
+  }
+  adoptCapTable(value: $.Orphan<$.List<CapDescriptor>>): void {
     $.utils.adopt(value, $.utils.getPointer(1, this));
   }
-  _disownCapTable(): $.Orphan<$.List<CapDescriptor>> {
+  disownCapTable(): $.Orphan<$.List<CapDescriptor>> {
     return $.utils.disown(this.capTable);
   }
   /**
@@ -2135,14 +2138,11 @@ export class Payload extends $.Struct {
   get capTable(): $.List<CapDescriptor> {
     return $.utils.getList(1, Payload._CapTable, this);
   }
-  _hasCapTable(): boolean {
-    return !$.utils.isNull($.utils.getPointer(1, this));
-  }
-  _initCapTable(length: number): $.List<CapDescriptor> {
-    return $.utils.initList(1, Payload._CapTable, length, this);
-  }
   set capTable(value: $.List<CapDescriptor>) {
     $.utils.copyFrom(value, $.utils.getPointer(1, this));
+  }
+  get hasCapTable(): boolean {
+    return !$.utils.isNull($.utils.getPointer(1, this));
   }
   toString(): string { return "Payload_" + super.toString(); }
 }
@@ -2227,11 +2227,11 @@ export class CapDescriptor extends $.Struct {
     size: new $.ObjectSize(8, 1),
     defaultAttachedFd: $.getUint8Mask(255)
   };
-  get _isNone(): boolean {
-    return $.utils.getUint16(0, this) === 0;
-  }
   set none(_: true) {
     $.utils.setUint16(0, 0, this);
+  }
+  get isNone(): boolean {
+    return $.utils.getUint16(0, this) === 0;
   }
   /**
 * The ID of a capability in the sender's export table (receiver's import table).  It may be a
@@ -2242,12 +2242,12 @@ export class CapDescriptor extends $.Struct {
     $.utils.testWhich("senderHosted", $.utils.getUint16(0, this), 1, this);
     return $.utils.getUint32(4, this);
   }
-  get _isSenderHosted(): boolean {
-    return $.utils.getUint16(0, this) === 1;
-  }
   set senderHosted(value: number) {
     $.utils.setUint16(0, 1, this);
     $.utils.setUint32(4, value, this);
+  }
+  get isSenderHosted(): boolean {
+    return $.utils.getUint16(0, this) === 1;
   }
   /**
 * A promise that the sender will resolve later.  The sender will send exactly one Resolve
@@ -2261,12 +2261,12 @@ export class CapDescriptor extends $.Struct {
     $.utils.testWhich("senderPromise", $.utils.getUint16(0, this), 2, this);
     return $.utils.getUint32(4, this);
   }
-  get _isSenderPromise(): boolean {
-    return $.utils.getUint16(0, this) === 2;
-  }
   set senderPromise(value: number) {
     $.utils.setUint16(0, 2, this);
     $.utils.setUint32(4, value, this);
+  }
+  get isSenderPromise(): boolean {
+    return $.utils.getUint16(0, this) === 2;
   }
   /**
 * A capability (or promise) previously exported by the receiver (imported by the sender).
@@ -2276,18 +2276,22 @@ export class CapDescriptor extends $.Struct {
     $.utils.testWhich("receiverHosted", $.utils.getUint16(0, this), 3, this);
     return $.utils.getUint32(4, this);
   }
-  get _isReceiverHosted(): boolean {
-    return $.utils.getUint16(0, this) === 3;
-  }
   set receiverHosted(value: number) {
     $.utils.setUint16(0, 3, this);
     $.utils.setUint32(4, value, this);
   }
-  _adoptReceiverAnswer(value: $.Orphan<PromisedAnswer>): void {
+  get isReceiverHosted(): boolean {
+    return $.utils.getUint16(0, this) === 3;
+  }
+  initReceiverAnswer(): PromisedAnswer {
+    $.utils.setUint16(0, 4, this);
+    return $.utils.initStructAt(0, PromisedAnswer, this);
+  }
+  adoptReceiverAnswer(value: $.Orphan<PromisedAnswer>): void {
     $.utils.setUint16(0, 4, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownReceiverAnswer(): $.Orphan<PromisedAnswer> {
+  disownReceiverAnswer(): $.Orphan<PromisedAnswer> {
     return $.utils.disown(this.receiverAnswer);
   }
   /**
@@ -2299,25 +2303,25 @@ export class CapDescriptor extends $.Struct {
     $.utils.testWhich("receiverAnswer", $.utils.getUint16(0, this), 4, this);
     return $.utils.getStruct(0, PromisedAnswer, this);
   }
-  _hasReceiverAnswer(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initReceiverAnswer(): PromisedAnswer {
-    $.utils.setUint16(0, 4, this);
-    return $.utils.initStructAt(0, PromisedAnswer, this);
-  }
-  get _isReceiverAnswer(): boolean {
-    return $.utils.getUint16(0, this) === 4;
-  }
   set receiverAnswer(value: PromisedAnswer) {
     $.utils.setUint16(0, 4, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
   }
-  _adoptThirdPartyHosted(value: $.Orphan<ThirdPartyCapDescriptor>): void {
+  get isReceiverAnswer(): boolean {
+    return $.utils.getUint16(0, this) === 4;
+  }
+  get hasReceiverAnswer(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
+  }
+  initThirdPartyHosted(): ThirdPartyCapDescriptor {
+    $.utils.setUint16(0, 5, this);
+    return $.utils.initStructAt(0, ThirdPartyCapDescriptor, this);
+  }
+  adoptThirdPartyHosted(value: $.Orphan<ThirdPartyCapDescriptor>): void {
     $.utils.setUint16(0, 5, this);
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownThirdPartyHosted(): $.Orphan<ThirdPartyCapDescriptor> {
+  disownThirdPartyHosted(): $.Orphan<ThirdPartyCapDescriptor> {
     return $.utils.disown(this.thirdPartyHosted);
   }
   /**
@@ -2334,19 +2338,15 @@ export class CapDescriptor extends $.Struct {
     $.utils.testWhich("thirdPartyHosted", $.utils.getUint16(0, this), 5, this);
     return $.utils.getStruct(0, ThirdPartyCapDescriptor, this);
   }
-  _hasThirdPartyHosted(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initThirdPartyHosted(): ThirdPartyCapDescriptor {
-    $.utils.setUint16(0, 5, this);
-    return $.utils.initStructAt(0, ThirdPartyCapDescriptor, this);
-  }
-  get _isThirdPartyHosted(): boolean {
-    return $.utils.getUint16(0, this) === 5;
-  }
   set thirdPartyHosted(value: ThirdPartyCapDescriptor) {
     $.utils.setUint16(0, 5, this);
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get isThirdPartyHosted(): boolean {
+    return $.utils.getUint16(0, this) === 5;
+  }
+  get hasThirdPartyHosted(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   /**
 * If the RPC message in which this CapDescriptor was delivered also had file descriptors
@@ -2440,11 +2440,11 @@ export class PromisedAnswer_Op extends $.Struct {
     id: "f316944415569081",
     size: new $.ObjectSize(8, 0),
   };
-  get _isNoop(): boolean {
-    return $.utils.getUint16(0, this) === 0;
-  }
   set noop(_: true) {
     $.utils.setUint16(0, 0, this);
+  }
+  get isNoop(): boolean {
+    return $.utils.getUint16(0, this) === 0;
   }
   /**
 * Get a pointer field within a struct.  The number is an index into the pointer section, NOT
@@ -2455,12 +2455,12 @@ export class PromisedAnswer_Op extends $.Struct {
     $.utils.testWhich("getPointerField", $.utils.getUint16(0, this), 1, this);
     return $.utils.getUint16(2, this);
   }
-  get _isGetPointerField(): boolean {
-    return $.utils.getUint16(0, this) === 1;
-  }
   set getPointerField(value: number) {
     $.utils.setUint16(0, 1, this);
     $.utils.setUint16(2, value, this);
+  }
+  get isGetPointerField(): boolean {
+    return $.utils.getUint16(0, this) === 1;
   }
   toString(): string { return "PromisedAnswer_Op_" + super.toString(); }
   which(): PromisedAnswer_Op_Which {
@@ -2499,10 +2499,13 @@ export class PromisedAnswer extends $.Struct {
   set questionId(value: number) {
     $.utils.setUint32(0, value, this);
   }
-  _adoptTransform(value: $.Orphan<$.List<PromisedAnswer_Op>>): void {
+  initTransform(length: number): $.List<PromisedAnswer_Op> {
+    return $.utils.initList(0, PromisedAnswer._Transform, length, this);
+  }
+  adoptTransform(value: $.Orphan<$.List<PromisedAnswer_Op>>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownTransform(): $.Orphan<$.List<PromisedAnswer_Op>> {
+  disownTransform(): $.Orphan<$.List<PromisedAnswer_Op>> {
     return $.utils.disown(this.transform);
   }
   /**
@@ -2514,14 +2517,11 @@ export class PromisedAnswer extends $.Struct {
   get transform(): $.List<PromisedAnswer_Op> {
     return $.utils.getList(0, PromisedAnswer._Transform, this);
   }
-  _hasTransform(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
-  _initTransform(length: number): $.List<PromisedAnswer_Op> {
-    return $.utils.initList(0, PromisedAnswer._Transform, length, this);
-  }
   set transform(value: $.List<PromisedAnswer_Op>) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get hasTransform(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   toString(): string { return "PromisedAnswer_" + super.toString(); }
 }
@@ -2537,10 +2537,10 @@ export class ThirdPartyCapDescriptor extends $.Struct {
     id: "d37007fde1f0027d",
     size: new $.ObjectSize(8, 1),
   };
-  _adoptId(value: $.Orphan<$.Pointer>): void {
+  adoptId(value: $.Orphan<$.Pointer>): void {
     $.utils.adopt(value, $.utils.getPointer(0, this));
   }
-  _disownId(): $.Orphan<$.Pointer> {
+  disownId(): $.Orphan<$.Pointer> {
     return $.utils.disown(this.id);
   }
   /**
@@ -2550,11 +2550,11 @@ export class ThirdPartyCapDescriptor extends $.Struct {
   get id(): $.Pointer {
     return $.utils.getPointer(0, this);
   }
-  _hasId(): boolean {
-    return !$.utils.isNull($.utils.getPointer(0, this));
-  }
   set id(value: $.Pointer) {
     $.utils.copyFrom(value, $.utils.getPointer(0, this));
+  }
+  get hasId(): boolean {
+    return !$.utils.isNull($.utils.getPointer(0, this));
   }
   /**
 * A proxy for the third-party object exported by the sender.  In CapTP terminology this is called
@@ -2680,6 +2680,9 @@ export class Exception extends $.Struct {
   set reason(value: string) {
     $.utils.setText(0, value, this);
   }
+  get hasReason(): boolean {
+    return !$.utils.isNull($.Text.fromPointer($.utils.getPointer(0, this)));
+  }
   /**
 * The type of the error. The purpose of this enum is not to describe the error itself, but
 * rather to describe how the client might want to respond to the error.
@@ -2722,6 +2725,9 @@ export class Exception extends $.Struct {
   }
   set trace(value: string) {
     $.utils.setText(1, value, this);
+  }
+  get hasTrace(): boolean {
+    return !$.utils.isNull($.Text.fromPointer($.utils.getPointer(1, this)));
   }
   toString(): string { return "Exception_" + super.toString(); }
 }

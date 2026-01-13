@@ -45,7 +45,7 @@ export function generateNode(
   // An array of group structs formed as children of this struct.
   // They appear before the struct node in the file.
   const groupNodes = ctx.nodes.filter(
-    (node) => node.scopeId === nodeId && node._isStruct && node.struct.isGroup,
+    (node) => node.scopeId === nodeId && node.isStruct && node.struct.isGroup,
   );
   for (const groupNode of groupNodes) {
     generateNode(ctx, groupNode);

@@ -103,7 +103,7 @@ export class Conn {
   bootstrap<C>(InterfaceClass: InterfaceCtor<C, Server>): C {
     const q = this.newQuestion();
     const msg = newMessage();
-    const boot = msg._initBootstrap();
+    const boot = msg.initBootstrap();
     boot.questionId = q.id;
 
     this.sendMessage(msg);
@@ -538,7 +538,7 @@ export class Conn {
     const params = placeParams(cl, payload.content);
     payload.content = params;
     this.makeCapTable(payload.segment, (length) =>
-      payload._initCapTable(length),
+      payload.initCapTable(length),
     );
   }
 
@@ -601,7 +601,7 @@ export class Conn {
             if (ans.conn !== this) {
               break dig;
             }
-            const a = desc._initReceiverAnswer();
+            const a = desc.initReceiverAnswer();
             a.questionId = ans.id;
             transformToPromisedAnswer(a, p.transform());
             return;
